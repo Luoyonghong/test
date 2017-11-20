@@ -1,0 +1,8 @@
+.*.swp
+*.o
+*.bin
+*.settings
+*.class
+data
+fasttext
+result
