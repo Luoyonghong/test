@@ -112,7 +112,9 @@ public class Problem47
 	    }  
 	    for(int i=0;i<num.length;i++)  
 	    {  
-	        if(i>0 && !used[i-1] && num[i]==num[i-1]) continue;  
+	        if(i>0 && !used[i-1] && num[i]==num[i-1]) continue;  // 选取下一个元素的时候，要查看这个元素的前一个元素是否和它相同，
+	        													//如果相同而且没有使用过，就不用选取这个元素，因为如果选取了这个元素，
+	        													//所得的结果被包含于选取了前一个相同元素的结果中
 	        if(!used[i])  
 	        {  
 	            used[i] = true;  
