@@ -73,7 +73,7 @@ public class Problem56
 					in2=intervals.get(i);
 			if(in1.end>=in2.start)
 			{
-				in1.end=in2.end;
+				in1.end=Math.max(in1.end, in2.end); 
 				in1.start=Math.min(in1.start, in2.start);
 				intervals.remove(i);
 				i--;
@@ -92,11 +92,26 @@ public class Problem56
 			}
 			
 		}
+		for(int i=1;i<intervals.size();i++)
+		{
+			Interval in1=intervals.get(i-1),
+					in2=intervals.get(i);
+			if(in1.end>=in2.start)
+			{
+				in1.end=Math.max(in1.end, in2.end); 
+				in1.start=Math.min(in1.start, in2.start);
+				intervals.remove(i);
+				i--;
+			}
+			
+		}
 		
 		return intervals;
 	}
 	public static void main(String[] args)
 	{
 		Problem56 p=new Problem56();
+		
+		//Interval[] in={new Interval(2,3),};
 	}
 }
