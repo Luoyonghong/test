@@ -1,4 +1,4 @@
-package leetcode43AndLater;
+package leetcode62AndLater;
 
 public class Problem65
 {
