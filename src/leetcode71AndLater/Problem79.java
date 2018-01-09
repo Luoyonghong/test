@@ -33,7 +33,7 @@ public class Problem79
 		
 		if(word.charAt(word_index)==board[board_indexI][board_indexJ]&&!used[board_indexI][board_indexJ])
 		{
-			System.out.println(board_indexI+" "+board_indexJ);
+			//System.out.println(board_indexI+" "+board_indexJ);
 			used[board_indexI][board_indexJ]=true;
 			if(func(board, word, word_index+1, board_indexI+1,board_indexJ,m,n,used))
 				return true;
