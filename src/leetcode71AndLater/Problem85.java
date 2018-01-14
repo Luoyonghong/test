@@ -1,10 +1,35 @@
 package leetcode71AndLater;
 
+import java.security.acl.LastOwnerException;
 import java.util.Stack;
 
-public class Problem84
+public class Problem85
 {
-
+	public int maximalRectangle(char[][] matrix)
+	{
+		int m=0,n=0;
+		m=matrix.length;
+		if(m>0)
+			n=matrix[0].length;
+		int[] heights=new int[n];
+		for(int j=0;j<n;j++)
+			if(matrix[0][j]=='1')
+				heights[j]=1;
+		int max=largestRectangleArea(heights);
+		for(int i=1;i<m;i++)
+		{
+			for(int j=0;j<n;j++)
+			{
+				if(matrix[i][j]=='1')
+					heights[j]+=1;
+				else
+					heights[j]=0;
+			}
+			max=Math.max(max, largestRectangleArea(heights));
+		}
+		return max;
+	}
+	
 	public int largestRectangleArea(int[] heights)
 	{
 		if(heights.length==0)
@@ -35,7 +60,7 @@ public class Problem84
 						if((i-f-1)*heights[t]>max) 
 						{
 							max=(i-f-1)*heights[t];
-							System.out.println("new max: "+max); 
+							//System.out.println("new max: "+max); 
 						}
 						if(s.size()==0)//堆栈为空了都还没找到比当前柱子更小的值
 							break;
@@ -54,10 +79,7 @@ public class Problem84
 				}
 			}
 		}
-		for (Integer integer : s)
-		{
-			System.out.println(integer); 
-		}
+		
 		
 		int d=s.pop();
 		int min=heights[d];
@@ -71,7 +93,7 @@ public class Problem84
 			if((heights.length-f-1)*heights[d]>max)
 			{
 				max=(heights.length-f-1)*heights[d];
-				System.out.println("new max: "+max); 
+				//System.out.println("new max: "+max); 
 			}
 			d=f;
 			s.pop();
@@ -80,54 +102,18 @@ public class Problem84
 			else
 				f=-1;
 		}
-		System.out.println("min: "+min); 
+		//System.out.println("min: "+min); 
 		if(min*heights.length>max)
 			max=min*heights.length;
 		return max;
 	}
-	
-	int largestRectangleArea2(int height[]) 
-    {
-        int res=0;
-        Stack<Integer> stk=new Stack<Integer>(); 
-        int heights[] =new int[height.length+1];
-        for (int i=0;i<height.length;i++)
-		{
-			heights[i]=height[i];
-		}
-        heights[height.length]=0;
-        for(int i=0;i<heights.length;++i)
-        {
-        	System.out.print("now stack :");
-        	for (int j : stk)
-			{
-				System.out.print(j+" ");
-			}
-        	System.out.println(); 
-            if(stk.empty()||heights[stk.lastElement()]<=heights[i])
-            {
-                stk.push(i);
-                System.out.println("push i"); 
-            }
-            else
-            {
-                int temp=stk.lastElement();
-                stk.pop();
-                res=Math.max(res,heights[temp]*(stk.empty()?i:(i-stk.lastElement()-1)));//为什么不用i-temp.index?
-                System.out.println("pop "+temp+", new res: "+res);                      //因为堆栈中两个元素不一定挨着，只能用更前面的一个+1  
-                --i;
-            }
-        }
-        return res;    
-    }
-	
-	
 	public static void main(String[] args)
 	{
-		Problem84 p=new Problem84();
-		int heights[]=
-		//	{4,1,0,3,2,5};
-			{1};
-		System.out.println(p.largestRectangleArea(heights));
+		Problem85 p=new Problem85();
+		char[][] matrix={{'1', '0', '1', '0', '0'},
+						{'1', '0', '1', '1', '1'},
+						{'1', '1', '1', '1', '1'},
+						{'1', '0', '0', '1', '0'}};
+		System.out.println(p.maximalRectangle(matrix)); 
 	}
 }
