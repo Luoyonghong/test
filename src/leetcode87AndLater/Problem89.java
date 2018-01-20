@@ -13,7 +13,6 @@ public class Problem89
 		char base[] =new char[n];
 		for(int j=0;j<n;j++)
 			base[j]='0';
-		String t=base.toString();
 		l.add(0);
 		boolean dcsend=true;
 		int i=n-1;
