@@ -15,10 +15,35 @@ public class Problem98
 			this.ok=ok;
 		}
 	}
-	public boolean isValidBST(TreeNode root)
+	public boolean isValidBST2(TreeNode root)
 	{
 		
 		return func(root).ok;
+		
+	}
+	
+	public boolean isValidBST(TreeNode root)
+	{
+		
+		double before[]=new double[1];
+		before[0]=-Double.MAX_VALUE;
+		return helper(root, before);
+		
+	}
+	
+	public boolean helper(TreeNode t, double[] before)
+	{
+		
+		if(t==null)
+			return true;
+		System.out.println("t: "+t.val+" before:"+before[0]); 
+		boolean m1=
+		helper(t.left, before);
+		if(before[0]>=t.val)
+			return false;
+		else
+			before[0]=t.val;
+		return	helper(t.right, before)&&m1;
 		
 	}
 	
@@ -75,6 +100,8 @@ public class Problem98
 		t3.right=t4;
 		
 		Problem98 p=new Problem98();
-		System.out.println(p.isValidBST(root)); 
+		
+		System.out.println(p.isValidBST(new TreeNode(0).left=new TreeNode(-1)));  
+		System.out.println(-4.9E-32>-1); 
 	}
 }
