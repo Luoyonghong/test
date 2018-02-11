@@ -6,7 +6,11 @@ import java.util.List;
 public class Problem118
 {
 	/*
-	 * [ [1], [1,1], [1,2,1], [1,3,3,1], [1,4,6,4,1] ]
+	 * [       [1],
+	 *        [1,1],
+	 *      [1,2,1], 
+	 *     [1,3,3,1], 
+	 *   [1,4,6,4,1] ]
 	 */
 	public List<List<Integer>> generate(int numRows)
 	{
@@ -50,7 +54,7 @@ public class Problem118
 	public static void main(String[] args)
 	{
 		Problem118 p = new Problem118();
-		List<List<Integer>> l = p.generate(5);
+		List<List<Integer>> l = p.generate(2);
 		for (List<Integer> list : l)
 		{
 			for (Integer integer : list)
