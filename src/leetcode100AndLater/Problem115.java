@@ -22,7 +22,7 @@ public class Problem115 {
 		 for(int i=1;i<=s.length();i++)
 			 for(int j=1;j<=t.length();j++)
 			 {
-				 if(s.charAt(i-1)==t.charAt(j-1))//当前s[i-1]!=t[j-1] r[i][j]=删除s[i]的结果加上不删除s[i]的结果
+				 if(s.charAt(i-1)==t.charAt(j-1))//当前s[i-1]!=t[j-1], r[i][j]=删除s[i]的结果加上不删除s[i]的结果
 				 {
 					
 						 r[i][j]=r[i-1][j-1]+r[i-1][j];
