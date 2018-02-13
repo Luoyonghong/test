@@ -14,6 +14,11 @@ class TreeNode
 
 public class Problem124
 {
+	//寻找二叉树中任意开头和结果的最大路径
+	/*
+	 * 要么是当前节点的左子树+右子树+当前值，或者直接返回当前节点遍历到叶子节点的路径最大和
+	 * 因为值有可能是负数，所以判断一下左子树+右子树的路径和如果小于0，就舍弃这个，变成0+当前值
+	 */
 	int max=Integer.MIN_VALUE;
 	public int maxPathSum(TreeNode root)
 	{
