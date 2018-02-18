@@ -6,6 +6,7 @@ import java.util.Stack;
 
 public class Problem131
 {
+	//应该用深度优先遍历
 	List<List<String>> l=new ArrayList<>();
 	Stack<String> nowlist=new Stack<>(); 
 	public List<List<String>> partition(String s)
