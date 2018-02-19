@@ -12,7 +12,7 @@ class ListNode
 	}
 }
 
-public class Problem140
+public class Problem141
 {
 	public boolean hasCycle(ListNode head)
 	{
