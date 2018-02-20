@@ -7,7 +7,7 @@ public class Problem147
 		if(head==null)
 			return null;
 		ListNode t=head;
-		ListNode before=new ListNode(Integer.MIN_VALUE);
+		ListNode before=new ListNode(Integer.MIN_VALUE);//需要新建一个链表，这样最后是null
 		ListNode beforeback=before;
 		//head=before;
 		ListNode back=head;
@@ -21,7 +21,7 @@ public class Problem147
 			}
 			ListNode tn=t.next;
 			
-			t.next=before.next;
+			t.next=before.next;//若找不到比他小的，最后是null
 			before.next=t;
 			
 			t=tn;
