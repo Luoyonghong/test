@@ -1,8 +1,7 @@
 package leetcode140AndLater;
 
-public class Problem153
+public class Problem154
 {
-	//4 5 6 7 0 1 2 3
 	public int findMin(int[] nums)
 	{
 		return Math.min(f(nums, 0, nums.length/2),f(nums, nums.length/2, nums.length-1));
@@ -22,11 +21,5 @@ public class Problem153
 			int mid=(begin+end)/2;
 			return Math.min(f(nums, begin, mid), f(nums, mid, end)); 
 		}
-	}
-	public static void main(String[] args)
-	{
-		Problem153 p=new Problem153();
-		int[] nums={4,4,5,6,0,0,1,1,2,3,3,3};
-		System.out.println(p.findMin(nums));
 	}
 }
