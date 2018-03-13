@@ -58,5 +58,6 @@ public class MergeSort
 		{
 			System.out.print(i+" "); 
 		}
+		float f=3.4F;
 	}
 }
