@@ -5,6 +5,10 @@ import java.util.List;
 
 public class Problem315
 {
+	/*
+	 * 归并排序
+	 * 返回排序后每个数字的原始index
+	 */
 	int nixu[];
 	public List<Integer> countSmaller(int[] nums)
 	{
@@ -33,7 +37,7 @@ public class Problem315
 		int index_left[]=mergesort(left, middle, nums);
 		int index_right[]=mergesort(middle+1, right, nums);
 		int[] t=new int[right-left+1];
-		int index_sum[]=new int[right-left+1];
+		int index_sum[]=new int[right-left+1];//新的index
 		int i=middle;
 		int j=right;
 		int index=t.length-1;
@@ -43,7 +47,7 @@ public class Problem315
 			{
 				t[index]=nums[i];
 				index_sum[index]=index_left[i-left];
-				nixu[index_left[i-left]]+=j-middle;
+				nixu[index_left[i-left]]+=j-middle;//不能直接赋值！ 这只是对右半部分的逆序数的和，左半部分原来的还有一些，也要加起来
 				index--;
 				i--;
 			}
