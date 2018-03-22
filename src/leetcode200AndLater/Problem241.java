@@ -13,7 +13,7 @@ public class Problem241
 		(((2*3)-4)*5) = 10
 	 * 
 	 */
-	
+	//分治左右两边
 	public List<Integer> diffWaysToCompute(String input)
 	{
 		List<Integer> result=new ArrayList<Integer>();
@@ -57,6 +57,7 @@ public class Problem241
 	
 	//
 	//这样会有重复值
+	//每次算一个算子
 	/*
 	boolean isNeg=true;
 	public List<Integer> diffWaysToCompute(String input)
