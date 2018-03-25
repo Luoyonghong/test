@@ -20,7 +20,9 @@ public class 中序无括号
 			char t=s.charAt(i);
 			if(t=='+'||t=='-'||t=='*'||t=='/')
 			{
-				l.add(s.substring(lastop+1, i));
+				String n=s.substring(lastop+1, i);
+				if(n.length()!=0)
+					l.add(n);
 				l.add(t+"");
 				lastop=i;
 			}
