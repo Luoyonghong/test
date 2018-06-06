@@ -12,7 +12,7 @@ public class QuickSort
 		while(i!=j)//或者换成i<j也行
 		{
 			//最后循环完毕之后i肯定等于j,i<j或者i!=j的时候继续循环
-			while(nums[j]>temp&&j>i)//有没有等号都行，必须从right开始，不能从left开始！
+			while(nums[j]>temp&&j>i)//有没有等号都行，必须从right开始，不能从left开始！从左边开始的话，最后一个i是大于temp的，然后交换i和temp，必然出错，从右边开始，最后一个i是小于temp的
 				j--;
 			while(nums[i]<=temp&&i<j)
 				i++;
