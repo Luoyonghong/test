@@ -4,8 +4,43 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class Problem224
+public class Problem224简单计算器
 {
+	int calculate(String s) {
+        int res = 0, num = 0, sign = 1, n = s.length();
+        for (int i = 0; i < n; ++i) {
+            char c = s.charAt(i);
+			if (c >= '0' && c <= '9')
+			{
+				num = 10 * num + (c - '0');
+			}
+			else if (c == '(')
+			{
+				int j = i, cnt = 0;
+				for (; i < n; ++i)
+				{
+					if (s.charAt(i) == '(')
+						++cnt;
+					if (s.charAt(i) == ')')
+						--cnt;
+					if (cnt == 0)
+						break;
+				}
+				num = calculate(s.substring(j + 1, i));
+			}
+			if (c == '+' || c == '-' || i == n - 1)
+			{
+				res += sign * num;
+				num = 0;
+				sign = (c == '+') ? 1 : -1;
+			}
+        }
+        return res;
+    }
+
+	
+	
+	
 	/*
 	 * Input: "(1+(4+5+2)-3)+(6+8)"
 		Output: 23
@@ -13,6 +48,7 @@ public class Problem224
 	 * Input: " 2-1 + 2 "
 		Output: 3
 	 */
+	/*
 	public int calculate(String s)
 	{
 		List<String> ops=getOpAndNums(s);
@@ -70,16 +106,17 @@ public class Problem224
 			l.add(t);
 		return l;
 	}
+	*/
 	public static void main(String[] args)
 	{
-		Problem224 p=new Problem224();
-		//String s="(1+(4+5+2)-3)+(6+8)";
-		String s=" 2-1 + 2 ";
-		List<String> l=p.getOpAndNums(s);
-		for (String string : l)
-		{
-			System.out.print(string+" ");
-		}
+		Problem224简单计算器 p=new Problem224简单计算器();
+		String s="(1+(4+5+2)-3)+(6+8)";
+		//String s=" 2-1 + 2 ";
+//		List<String> l=p.getOpAndNums(s);
+//		for (String string : l)
+//		{
+//			System.out.print(string+" ");
+//		}
 		System.out.println(); 
 		System.out.println(p.calculate(s));
 		//System.out.println("csx".substring(0,0));  
