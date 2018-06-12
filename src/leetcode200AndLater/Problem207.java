@@ -32,6 +32,7 @@ public class Problem207
 				if(prerequisites[i][1]==t)
 				{
 					in[prerequisites[i][0]]--;
+					//必须是当前时刻被减少到0的才能加进去，下面的if放外面的话，会有很多以前就被减少为0的节点被放入队列
 					if(in[prerequisites[i][0]]==0)
 						q.offer(prerequisites[i][0]);
 				}
