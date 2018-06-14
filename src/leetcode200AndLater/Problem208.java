@@ -7,9 +7,9 @@ import java.util.List;
 class TrieNode
 {
 	boolean isWord;
-	HashMap<Character, TrieNode> nexts;
+	TrieNode[] nexts;
     public TrieNode() {
-    	nexts=new HashMap<Character, TrieNode>();
+    	nexts=new TrieNode[26];
     }
 }
 
@@ -26,12 +26,13 @@ class Trie {
         for(int i=0;i<word.length();i++)
         {
         	char t=word.charAt(i);
-        	if(temp.nexts.containsKey(t))
-        		temp=temp.nexts.get(t);
+        	int num=t-'a';
+        	if(temp.nexts[num]!=null)
+        		temp=temp.nexts[num];
         	else
         	{
-        		temp.nexts.put(t, new TrieNode());
-        		temp=temp.nexts.get(t);
+        		temp.nexts[num]=new TrieNode();
+        		temp=temp.nexts[num];
         	}
         	if(i==word.length()-1)
         		temp.isWord=true;
@@ -44,8 +45,9 @@ class Trie {
         for(int i=0;i<word.length();i++)
         {
         	char t=word.charAt(i);
-        	if(temp.nexts.containsKey(t))
-        		temp=temp.nexts.get(t);
+        	int num=t-'a';
+        	if(temp.nexts[num]!=null)
+        		temp=temp.nexts[num];
         	else
         	{
         		return false;
@@ -62,21 +64,30 @@ class Trie {
         for(int i=0;i<prefix.length();i++)
         {
         	char t=prefix.charAt(i);
-        	if(temp.nexts.containsKey(t))
-        		temp=temp.nexts.get(t);
+        	int num=t-'a';
+        	if(temp.nexts[num]!=null)
+        		temp=temp.nexts[num];
         	else
         	{
         		return false;
         	}
         	if(i==prefix.length()-1)
         	{
-        		if(temp.isWord||temp.nexts.size()>0)
+        		if(temp.isWord||getNum(temp.nexts)>0)
         			return true;
         		else
         			return false;
         	}	
         }
         return true;
+    }
+    private int getNum(TrieNode nodes[])
+    {
+    	int count=0;
+    	for(int i=0;i<nodes.length;i++)
+    		if(nodes[i]!=null)
+    			count++;
+    	return count;
     }
 }
 
