@@ -3,6 +3,36 @@ package sort;
 public class QuickSort
 {
 
+	public void sort2(int nums[],int begin, int end)
+	{
+		if(begin>=end)
+			return;
+		//int middle=(begin+end)/2;
+		int pivot =nums[begin];
+		int left=begin,right=end;
+		while(left<right)
+		{
+			while(nums[right]>=pivot&&left<right)
+				right--;
+			while(nums[left]<pivot&&left<right)
+				left++;
+			if(left<right)
+			{
+				int temp=nums[left];
+				nums[left]=nums[right];
+				nums[right]=temp;
+			}
+		}
+		nums[begin]=nums[right];
+		nums[right]=pivot;
+		
+		sort(nums,begin,right-1);
+		sort(nums,right+1,end);
+	}
+	
+	
+
+	
 	public void sort(int nums[],int left,int right)
 	{
 		if(left>=right) 
@@ -32,29 +62,12 @@ public class QuickSort
 	{
 		int nums[]={1,2,8,3,5,4,-1,2,1};
 		QuickSort q=new QuickSort();
-		q.sort(nums, 0, nums.length-1); 
+		q.sort2(nums, 0, nums.length-1); 
 		for (int i : nums)
 		{
 			System.out.print(i+" "); 
 		}
 		
-		int a=-10;
-		System.out.println(a>>>10);
 		
-//		for(int i=0;i<5;i++)
-//		{
-//			System.out.println(a);
-//			a=a>>1;
-//		}
-		try
-		{
-			int v=Integer.parseInt("cs");
-		}
-		catch(Exception e)
-		{
-			System.out.println("inner catch"); 
-		}
-		System.out.println("after catch"); 
-		System.out.println(Double.parseDouble("123.e+6")); 
 	}
 }
