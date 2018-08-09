@@ -2,6 +2,40 @@ package sort;
 
 public class HeapSort
 {
+	
+	public void downadjust2(int i, int[] nums, int length)
+	{
+		if(2*i+2>length)
+			return;
+		int leftchild=nums[i*2+1],rightchild=nums[i*2+2];
+		int maxchild=Math.max(leftchild, rightchild);
+		int maxindex=leftchild>rightchild?2*i+1:2*i+2;
+		if(nums[i]>=maxchild)
+			return;
+		else
+		{
+			swap(maxindex,i,nums);
+			downadjust2(maxindex,nums,length);
+		}
+	}
+	
+	public void sort2(int[] nums)
+	{
+		for(int i =nums.length-1;i>=0;i--)
+			downadjust2(i,nums,nums.length-1);
+		for(int i=0;i<nums.length;i++)
+		{
+			swap(0, nums.length-1-i, nums); 
+			downadjust2(0,nums,nums.length-2-i);
+			//注意这里必须是nums.length-2-i，不能是nums.length-1-i
+		}
+		
+	}
+	
+	
+	
+	
+	
 	/*
 	 * 节点i的左孩子是2*i+1,右：2*i+2
 	 * 父节点：(i-1)/2
@@ -54,7 +88,7 @@ public class HeapSort
 	{
 		int[] nums={1,2,8,3,5,4,-1,2,1};
 		HeapSort h=new HeapSort();
-		h.sort(nums);
+		h.sort2(nums);
 		for (int i : nums)
 		{
 			System.out.print(i+" "); 
