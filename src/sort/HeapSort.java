@@ -1,5 +1,7 @@
 package sort;
 
+import java.util.Arrays;
+
 public class HeapSort
 {
 	
@@ -93,5 +95,9 @@ public class HeapSort
 		{
 			System.out.print(i+" "); 
 		}
+		String[] sss= {"csx","csxs","cdveqsx"};
+		Arrays.sort(sss);
+		for(int i =0;i<sss.length;i++)
+			System.out.print(sss[i]+" "); 
 	}
 }
