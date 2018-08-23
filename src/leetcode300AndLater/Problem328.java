@@ -12,6 +12,9 @@ public class Problem328 {
 	}
 	// 偶数在前 奇数在后
 	public ListNode oddEvenList(ListNode head) {
-		
+		return null;
+	}
+	public static void main(String[] args) {
+		System.out.println(~1); 
 	}
 }
