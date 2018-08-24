@@ -54,13 +54,13 @@ public class 地下迷宫 {
 				shengyup=p;
 				index=suoyoulujing.size()-1;
 			}
+			//System.out.println("ok"); 
 			return false;
 		}
 		isuesd[i][j]=true;
 		xianzailujing.add(new int[] {i,j});
-		if(help(matrix, isuesd, p, i+1, j, m, n)||help(matrix, isuesd, p-3, i-1, j, m, n)
-				||help(matrix, isuesd, p-1, i, j+1, m, n)||help(matrix, isuesd, p-1, i, j+1, m, n)
-				)
+		if(help(matrix, isuesd, p-1, i, j+1, m, n)||help(matrix, isuesd, p-1, i, j+1, m, n)
+				||help(matrix, isuesd, p, i+1, j, m, n)||help(matrix, isuesd, p-3, i-1, j, m, n))
 		{
 			return true;
 		}
